@@ -158,6 +158,9 @@ int main()
         cout << "Image could not be found." << endl;
     }
 
+    //Saves original image with other extention
+    cv::imwrite("/home/ubuntu/images/Underwater_53k.png");
+
     //Reads original image, stores to a Mat image and checks if it isn't empty
     //This Mat image will be used to modify the pixels during the operations
     cv::Mat modified = cv::imread(filepath);
