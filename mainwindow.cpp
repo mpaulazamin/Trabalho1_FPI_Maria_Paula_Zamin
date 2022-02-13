@@ -74,7 +74,6 @@ void MainWindow::on_pushButtonInvertVertical_clicked()
 
     cv::cvtColor(modified , modified , cv::COLOR_BGR2RGB);
     ui->displayNewImage->setPixmap(QPixmap::fromImage(QImage(modified.data, modified.cols, modified.rows, modified.step, QImage::Format_RGB888)));
-    cv::imwrite("/home/ubuntu/images/new.jpg", modified);
 }
 
 void MainWindow::on_pushButtonInvertHorizontal_clicked()
@@ -127,13 +126,12 @@ void MainWindow::on_pushButtonConvertGrayscale_clicked()
     {
         for(int c = 0; c < original.cols; c++)
         {
-            float gray = original.at<cv::Vec3b>(r, c)[0] * 0.0722  + original.at<cv::Vec3b>(r, c)[1] * 0.7152 + original.at<cv::Vec3b>(r, c)[2] * 0.2126;
+            float gray = original.at<cv::Vec3b>(r, c)[0] * 0.114  + original.at<cv::Vec3b>(r, c)[1] * 0.587 + original.at<cv::Vec3b>(r, c)[2] * 0.299;
             modified.at<cv::Vec3b>(r, c)[0] = gray;
             modified.at<cv::Vec3b>(r, c)[1] = gray;
             modified.at<cv::Vec3b>(r, c)[2] = gray;
         }
     }
-
     cv::cvtColor(modified , modified , cv::COLOR_BGR2RGB);
     ui->displayNewImage->setPixmap(QPixmap::fromImage(QImage(modified.data, modified.cols, modified.rows, modified.step, QImage::Format_RGB888)));
 }
@@ -178,7 +176,7 @@ void MainWindow::on_pushButtonQuantizeImage_clicked()
     {
         for(int c = 0; c < original.cols; c++)
         {
-            float gray = original.at<cv::Vec3b>(r, c)[0] * 0.0722  + original.at<cv::Vec3b>(r, c)[1] * 0.7152 + original.at<cv::Vec3b>(r, c)[2] * 0.2126;
+            float gray = original.at<cv::Vec3b>(r, c)[0] * 0.114  + original.at<cv::Vec3b>(r, c)[1] * 0.587 + original.at<cv::Vec3b>(r, c)[2] * 0.299;
             modified.at<cv::Vec3b>(r, c)[0] = gray;
             modified.at<cv::Vec3b>(r, c)[1] = gray;
             modified.at<cv::Vec3b>(r, c)[2] = gray;
