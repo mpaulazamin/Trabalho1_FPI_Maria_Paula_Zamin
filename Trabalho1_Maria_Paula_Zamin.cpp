@@ -81,7 +81,7 @@ void quantization(cv::Mat& original, cv::Mat& modified, int tones)
         for(int c = 0; c < original.cols; c++)
         {
             //Computes luminance (gray) and replaces each pixel value of each channel by the value of luminance
-            float gray = original.at<cv::Vec3b>(r, c)[0] * 0.0722  + original.at<cv::Vec3b>(r, c)[1] * 0.7152 + original.at<cv::Vec3b>(r, c)[2] * 0.2126;
+            float gray = original.at<cv::Vec3b>(r, c)[0] * 0.114  + original.at<cv::Vec3b>(r, c)[1] * 0.587 + original.at<cv::Vec3b>(r, c)[2] * 0.299;
             modified.at<cv::Vec3b>(r, c)[0] = gray;
             modified.at<cv::Vec3b>(r, c)[1] = gray;
             modified.at<cv::Vec3b>(r, c)[2] = gray;
